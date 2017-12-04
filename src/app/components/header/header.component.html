@@ -1,0 +1,13 @@
+<div id="container">
+    <span>No. of Employees {{employeeCount}}</span>
+  <ul>
+    <li *ngFor="let menu of list">
+      <a href="" (click)="menuItemClicked($event, menu)">{{menu}}</a>
+    </li>
+  </ul>
+
+  <div>
+    <button *ngFor="let btn of buttonList; let i = index" [ngClass]="{ 'active': selectedButtonIndex === i }" (click)="onBtnClick(i)">{{btn}}</button>
+  </div>  
+
+</div>

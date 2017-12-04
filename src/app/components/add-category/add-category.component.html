@@ -1,0 +1,33 @@
+<h2>Add Category</h2>
+<form (ngSubmit)="onSubmit()" novalidate [formGroup]="myForm">
+  <div formGroupName="profileInformation">
+    <div>
+      <label for=""> Name</label>
+      <input type="text" formControlName="name">
+      <div *ngIf="myForm.get('profileInformation').get('name').errors">
+        <span *ngIf="myForm.get('profileInformation').get('name').errors.required">
+          This field is required.
+        </span>
+        <span *ngIf="myForm.get('profileInformation').get('name').errors.myCustomValidation">
+        This field is startswith a.
+      </span>
+        
+
+      </div>
+    </div>
+    <div>
+      <label for="">Email</label>
+      <input type="email" formControlName="email">
+    </div>
+  </div>
+  <div formGroupName="contactInformation">
+    <div>
+        <label for="">Mobile</label>
+        <input type="text" formControlName="mobile">
+      </div>
+  </div>
+  <div>
+    <input type="submit" value="Add Category">
+  </div>
+  {{myForm.value | json}}
+</form>

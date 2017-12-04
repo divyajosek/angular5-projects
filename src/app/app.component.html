@@ -1,0 +1,48 @@
+
+<div class="row">
+    <app-header 
+    [list]="menuList" 
+    (onMenuClick)="onMenuClick($event)"
+    [buttonList]="buttons"
+    (onButtonItemClick)="selectView($event)"
+    ></app-header>
+</div>
+<div class="row">
+    <span myColor>This is the main section</span> 
+    <h2 myColor="yellow">{{title | lowercase}}</h2> 
+    <h2>{{title | empName : "hello"}}</h2>
+</div>
+<div class="row">
+    <app-add-category></app-add-category>
+</div>
+<div class="row">
+    <app-add-employee (onSubmit)="addEmployee($event)"  *ngIf="activeViewIndex === 1"></app-add-employee>
+</div>
+<div class="row">
+    <div *ngIf="activeViewIndex === 0">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Age</th>
+            <th>View</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let emp of employees; let i = index" [ngClass]="{ 'selected' : emp.selected }">
+            <td>{{emp.name | empName :"Hi"}}</td>
+            <td>{{emp.age}}</td>
+            <td> <button (click)="onSelectEmployee(emp)">View</button> </td>
+            <td><button (click)="deleteEmployee(i)">Delete</button></td>
+          </tr>
+        </tbody>
+    </table>
+  </div>
+</div>
+<div class="row">
+    <app-selected-employee [employee]="selectedEmployee"></app-selected-employee>
+</div>
+<div class="row">
+ <app-footer></app-footer> 
+</div>

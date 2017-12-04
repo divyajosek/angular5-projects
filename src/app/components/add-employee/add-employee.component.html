@@ -1,0 +1,10 @@
+<h2>Add Employee</h2>
+{{newEmployee | json }}
+<div>
+  Name: <input type="text" [(ngModel)]="newEmployee.name">
+  
+</div>
+<div>
+  Age: <input type="number" [(ngModel)]="newEmployee.age">
+</div>
+<button (click)="addEmployee()">Add</button>
